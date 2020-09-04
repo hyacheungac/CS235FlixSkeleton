@@ -17,6 +17,10 @@ class Movie(object):
         self.__actors = []
         self.__genres = []
         self.__runtime_minutes = 0
+        self.__rating = 0.0
+        self.__votes = 0
+        self.__revenue = 0.0
+        self.__metascore = 0
 
     @property
     def title(self) -> str:
@@ -63,8 +67,55 @@ class Movie(object):
             if runtime_minutes >= 1:
                 self.__runtime_minutes = runtime_minutes
             else:
-                raise ValueError("runtime_minutes must be a positive number")
+                raise ValueError("runtime_minutes must be a positive number!")
 
+    @property
+    def rating(self) -> float:
+        return self.__rating
+
+    @rating.setter
+    def rating(self, rating):
+        if type(rating) == float:
+            if 0 < rating < 10:
+                self.__rating = rating
+            else:
+                raise ValueError("rating must be within the range 0 to 10!")
+
+    @property
+    def votes(self) -> int:
+        return self.__votes
+
+    @votes.setter
+    def votes(self, votes):
+        if type(votes) == int:
+            if votes > 0:
+                self.__votes = votes
+            else:
+                raise ValueError("Number of votes must be positive!")
+
+    @property
+    def revenue(self) -> float:
+        return self.__revenue
+
+    @revenue.setter
+    def revenue(self, revenue):
+        if type(revenue) == float:
+            if revenue > 0:
+                self.__revenue = revenue
+            else:
+                raise ValueError("revenue must be positive!")
+
+    @property
+    def metascore(self):
+        return self.__metascore
+
+    @metascore.setter
+    def metascore(self, metascore):
+        if type(metascore) == int or metascore == "N/A":
+            if metascore == "N/A" or metascore > 0:
+                self.__metascore = metascore
+            else:
+                raise ValueError("metascore must be either between 0 and 100, or N/A!")
 
     def __repr__(self):
         return f"<Movie {self.__title}, {self.__release_year}>"
@@ -99,3 +150,4 @@ class Movie(object):
     def remove_genre(self, genre):
         if genre in self.__genres:
             self.__genres.remove(genre)
+
