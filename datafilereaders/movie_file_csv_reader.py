@@ -62,15 +62,3 @@ class MovieFileCSVReader:
     @property
     def dataset_of_genres(self):
         return self.__dataset_of_genres
-
-    def get_dataset_of_movies(self):
-        return self.__dataset_of_movies
-
-    def get_dataset_of_actors(self):
-        return self.__dataset_of_actors
-
-    def get_dataset_of_directors(self):
-        return self.__dataset_of_directors
-
-    def get_dataset_of_genres(self):
-        return self.__dataset_of_genres
